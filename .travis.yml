@@ -38,7 +38,7 @@ before_script:
 #outputs salsforcedx plugin version
 - sfdx plugins --core
 #Authorizes Dev Hub
-- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername --setalias HubOrg
+#- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername --setalias HubOrg
 
 script:
 #Creates scratch org
