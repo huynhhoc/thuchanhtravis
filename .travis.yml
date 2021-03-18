@@ -38,11 +38,11 @@ before_script:
 #outputs salsforcedx plugin version
 - sfdx plugins --core
 #Authorizes Dev Hub
-#- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername --setalias HubOrg
+#- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername --setalias thuchanhtravis
 
 script:
 #Creates scratch org
-- sfdx force:org:create --targetdevhubusername HubOrg --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1
+- sfdx force:org:create --targetdevhubusername thuchanhtravis --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1
 - sfdx force:org:display --targetusername ciorg
 #Pushes source to scratch org
 - sfdx force:source:push --targetusername ciorg
@@ -51,12 +51,12 @@ script:
 #Deletes scratch org
 - sfdx force:org:delete --targetusername ciorg --noprompt
 #Creates package version
-- PACKAGEVERSION="$(sfdx force:package:version:create --package $PACKAGENAME --installationkeybypass --wait 10 --json --targetdevhubusername HubOrg | jq '.result.SubscriberPackageVersionId' | tr -d '"')"
+- PACKAGEVERSION="$(sfdx force:package:version:create --package $PACKAGENAME --installationkeybypass --wait 10 --json --targetdevhubusername thuchanhtravis | jq '.result.SubscriberPackageVersionId' | tr -d '"')"
 - echo "Package Version Id - "${PACKAGEVERSION}
 - echo "Waiting for 5 minutes for package replication"
 - sleep 5m
 #Creates scratch org
-- sfdx force:org:create --targetdevhubusername HubOrg --setdefaultusername --definitionfile config/project-scratch-def.json --setalias installorg --wait 10 --durationdays 1
+- sfdx force:org:create --targetdevhubusername thuchanhtravis --setdefaultusername --definitionfile config/project-scratch-def.json --setalias installorg --wait 10 --durationdays 1
 - sfdx force:org:display --targetusername installorg
 #Installs package in scratch org
 - sfdx force:package:install --package $PACKAGEVERSION --wait 10 --targetusername installorg
