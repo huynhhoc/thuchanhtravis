@@ -42,14 +42,14 @@ before_script:
 
 script:
 #Creates scratch org
-- sfdx force:org:create --targetdevhubusername thuchanhtravis --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1
-- sfdx force:org:display --targetusername ciorg
+#- sfdx force:org:create --targetdevhubusername thuchanhtravis --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1
+- sfdx force:org:display --targetusername thuchanhtravis
 #Pushes source to scratch org
-- sfdx force:source:push --targetusername ciorg
+- sfdx force:source:push --targetusername thuchanhtravis
 #Runs unit tests on scratch org
-- sfdx force:apex:test:run --targetusername ciorg --wait 10 --resultformat tap --codecoverage --testlevel $TESTLEVEL
+- sfdx force:apex:test:run --targetusername thuchanhtravis --wait 10 --resultformat tap --codecoverage --testlevel $TESTLEVEL
 #Deletes scratch org
-- sfdx force:org:delete --targetusername ciorg --noprompt
+- sfdx force:org:delete --targetusername thuchanhtravis --noprompt
 #Creates package version
 - PACKAGEVERSION="$(sfdx force:package:version:create --package $PACKAGENAME --installationkeybypass --wait 10 --json --targetdevhubusername thuchanhtravis | jq '.result.SubscriberPackageVersionId' | tr -d '"')"
 - echo "Package Version Id - "${PACKAGEVERSION}
