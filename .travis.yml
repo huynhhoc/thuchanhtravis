@@ -7,8 +7,7 @@ before_install:
 #
 
 #Decrypt server key
-- openssl aes-256-cbc -K $encrypted_b105d3438aa4_key -iv $encrypted_b105d3438aa4_iv
-  -in assets/server.key.enc -out assets/server.key -d
+
 #Assign variables
 - export CLIURL=https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz  
 - export SFDX_AUTOUPDATE_DISABLE=false
@@ -32,7 +31,7 @@ before_script:
 - export ROOTDIR=force-app/main/default/
 - export TESTLEVEL=RunLocalTests
 #Be sure to update the package ID (package ID starts with OHo) or package alias here from the sfdx-project.json file
-- export PACKAGENAME="0Ho0N000000CaT3SAK"
+- export PACKAGENAME="0Ho2v000000CawjCAC"
 - export PACKAGEVERSION=""
 #outputs CLI version
 - sfdx --version
