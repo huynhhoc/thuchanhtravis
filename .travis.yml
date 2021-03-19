@@ -33,6 +33,7 @@ before_script:
 #Be sure to update the package ID (package ID starts with OHo) or package alias here from the sfdx-project.json file
 - export PACKAGENAME="0Ho2v000000CawjCAC"
 - export PACKAGEVERSION=""
+
 #outputs CLI version
 - sfdx --version
 #outputs salsforcedx plugin version
@@ -41,6 +42,7 @@ before_script:
 #- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername --setalias thuchanhtravis
 
 script:
+- sfdx config:set defaultusername=huynhhoc@playful-panda-1ptsf6.com
 #Creates scratch org
 #- sfdx force:org:create --targetdevhubusername thuchanhtravis --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1
 - sfdx force:org:display #--targetusername huynhhoc@playful-panda-1ptsf6.com
