@@ -52,7 +52,7 @@ script:
 #Runs unit tests on scratch org
 - sfdx force:apex:test:run --targetusername ciorg --wait 10 --resultformat tap --codecoverage --testlevel $TESTLEVEL
 #Deletes scratch org
-- sfdx force:org:delete --targetusername huynhhoc@playful-panda-1ptsf6.com --noprompt
+- sfdx force:org:delete --targetusername ciorg --noprompt
 #Creates package version
 - PACKAGEVERSION="$(sfdx force:package:version:create --package $PACKAGENAME --installationkeybypass --wait 10 --json --targetdevhubusername thuchanhtravis | jq '.result.SubscriberPackageVersionId' | tr -d '"')"
 - echo "Package Version Id - "${PACKAGEVERSION}
