@@ -42,15 +42,15 @@ before_script:
 #- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername --setalias thuchanhtravis
 
 script:
-- sfdx plugins:install salesforcedx@pre-release
-- sfdx config:set defaultusername="huynhhoc@playful-panda-1ptsf6.com"
+#- sfdx plugins:install salesforcedx@pre-release
+#- sfdx config:set defaultusername="huynhhoc@playful-panda-1ptsf6.com"
 #Creates scratch org
-#- sfdx force:org:create --targetdevhubusername thuchanhtravis --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1
-- sfdx force:org:display #--targetusername huynhhoc@playful-panda-1ptsf6.com
+- sfdx force:org:create --targetdevhubusername huynhhoc@playful-panda-1ptsf6.com --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1
+- sfdx force:org:display --targetusername ciorg
 #Pushes source to scratch org
-#- sfdx force:source:push --targetusername huynhhoc@playful-panda-1ptsf6.com
+- sfdx force:source:push --targetusername ciorg
 #Runs unit tests on scratch org
-- sfdx force:apex:test:run --targetusername huynhhoc@playful-panda-1ptsf6.com --wait 10 --resultformat tap --codecoverage --testlevel $TESTLEVEL
+- sfdx force:apex:test:run --targetusername ciorg --wait 10 --resultformat tap --codecoverage --testlevel $TESTLEVEL
 #Deletes scratch org
 - sfdx force:org:delete --targetusername huynhhoc@playful-panda-1ptsf6.com --noprompt
 #Creates package version
