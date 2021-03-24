@@ -4,6 +4,7 @@ public with sharing class aaPage52 {
     public aaPage52() {
         X = 0;
         X2 = 0;
+        // test
     }
     public PageReference TestX() {
         String strX = ApexPages.currentPage().getParameters().get('X');
