@@ -34,7 +34,7 @@ script:
 - sfdx force:org:create --targetdevhubusername HubOrg --setdefaultusername --definitionfile
   config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1
 - sfdx force:org:display --targetusername ciorg
-- sfdx force:source:push --targetusername ciorg
+#- sfdx force:source:push --targetusername ciorg
 - sfdx force:apex:test:run --targetusername ciorg --wait 10 --resultformat tap --codecoverage
   --testlevel $TESTLEVEL
 - sfdx force:org:delete --targetusername ciorg --noprompt
