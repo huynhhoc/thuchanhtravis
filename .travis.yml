@@ -27,7 +27,7 @@ before_script:
 #Authorizes Dev Hub
 - CONSUMERKEY="3MVG9G9pzCUSkzZsUK7AabIE7y3z5gD0u9SkmNymL0oOU09_EdT6c_S1FnBECaisKyc8xp0mQbXZu0ZcqYHSf"
 - USERNAME="huynhhoc@playful-panda-1ptsf6.com"
-- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername --setalias HubOrg
+- sfdx auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername --setalias HubOrg
 script:
 - sfdx force:org:create --targetdevhubusername HubOrg --setdefaultusername --definitionfile
   config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1
