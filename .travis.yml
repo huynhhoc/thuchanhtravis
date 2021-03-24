@@ -5,7 +5,7 @@ before_install:
 #
 
 #Decrypt server key
-- openssl aes-256-cbc -K $encrypted_79a2f6093848_key -iv $encrypted_79a2f6093848_iv -in assets/server.key.enc -out assets/server.key -A
+#- openssl aes-256-cbc -K $encrypted_79a2f6093848_key -iv $encrypted_79a2f6093848_iv -in assets/server.key.enc -out assets/server.key -A
 #Assign variables
 - export CLIURL=https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
 - export SFDX_AUTOUPDATE_DISABLE=false
@@ -27,7 +27,9 @@ before_script:
 #Authorizes Dev Hub
 - CONSUMERKEY="3MVG9G9pzCUSkzZsUK7AabIE7y3z5gD0u9SkmNymL0oOU09_EdT6c_S1FnBECaisKyc8xp0mQbXZu0ZcqYHSf"
 - USERNAME="huynhhoc@playful-panda-1ptsf6.com"
-- sfdx auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername --setalias HubOrg
+- CONSUMERKEY="3MVG9G9pzCUSkzZsUK7AabIE7y3z5gD0u9SkmNymL0oOU09_EdT6c_S1FnBECaisKyc8xp0mQbXZu0ZcqYHSf"
+- USERNAME="huynhhoc@playful-panda-1ptsf6.com"
+- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername --setalias HubOrg
 script:
 - sfdx force:org:create --targetdevhubusername HubOrg --setdefaultusername --definitionfile
   config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1
