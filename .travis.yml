@@ -33,7 +33,7 @@ before_script:
 #Be sure to update the package ID (package ID starts with OHo) or package alias here from the sfdx-project.json file
 - export PACKAGENAME="0Ho2v000000CawjCAC"
 - export PACKAGEVERSION=""
-- export SFDX_IMPROVED_CODE_COVERAGE='true'
+- export SFDX_IMPROVED_CODE_COVERAGE="true"
 #outputs CLI version
 - sfdx --version
 #outputs salsforcedx plugin version
@@ -51,6 +51,7 @@ script:
 - sfdx force:source:push --targetusername ciorg
 #Runs unit tests on scratch org
 - sfdx force:apex:test:run --targetusername ciorg --wait 10 --resultformat tap --codecoverage --testlevel $TESTLEVEL
+- sfdx force:apex:test:report --targetusername ciorg --loglevel $INFO --verbose --codecoverage
 #Deletes scratch org
 - sfdx force:org:delete --targetusername ciorg --noprompt
 #Creates package version
