@@ -33,7 +33,7 @@ before_script:
 #Be sure to update the package ID (package ID starts with OHo) or package alias here from the sfdx-project.json file
 - export PACKAGENAME="0Ho2v000000CawjCAC"
 - export PACKAGEVERSION=""
-
+- export SFDX_IMPROVED_CODE_COVERAGE='true'
 #outputs CLI version
 - sfdx --version
 #outputs salsforcedx plugin version
@@ -42,7 +42,7 @@ before_script:
 - CONSUMERKEY="3MVG9G9pzCUSkzZsUK7AabIE7y3z5gD0u9SkmNymL0oOU09_EdT6c_S1FnBECaisKyc8xp0mQbXZu0ZcqYHSf"
 - USERNAME="huynhhoc@playful-panda-1ptsf6.com"
 - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername --setalias HubOrg
-- SFDX_IMPROVED_CODE_COVERAGE='true'
+
 script:
 #Creates scratch org
 - sfdx force:org:create --targetdevhubusername HubOrg --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1
