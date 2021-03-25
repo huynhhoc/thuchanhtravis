@@ -14,7 +14,7 @@
     ],
     "namespace": "",
     "sfdcLoginUrl": "https://login.salesforce.com",
-    "sourceApiVersion": "44.0",
+    "sourceApiVersion": "49.0",
     "packageAliases": {
         "Travis.CI": "0Ho2v000000CawjCAC",
         "Travis.CI@0.1.0-1": "04t2v000007Sn2NAAS"

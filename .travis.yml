@@ -51,7 +51,6 @@ script:
 - sfdx force:source:push --targetusername ciorg
 #Runs unit tests on scratch org
 - sfdx force:apex:test:run --targetusername ciorg --wait 10 --resultformat tap --codecoverage --testlevel $TESTLEVEL
-- npm run coveralls
 #Deletes scratch org
 - sfdx force:org:delete --targetusername ciorg --noprompt
 #Creates package version
